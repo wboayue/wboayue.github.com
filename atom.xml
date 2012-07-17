@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Wilfred Boayue]]></title>
-  <link href="http://wboayue.github.com/atom.xml" rel="self"/>
-  <link href="http://wboayue.github.com/"/>
-  <updated>2012-07-17T00:40:31-04:00</updated>
-  <id>http://wboayue.github.com/</id>
+  <link href="http://wilfred-boayue.com/atom.xml" rel="self"/>
+  <link href="http://wilfred-boayue.com/"/>
+  <updated>2012-07-17T01:04:22-04:00</updated>
+  <id>http://wilfred-boayue.com/</id>
   <author>
     <name><![CDATA[Wilfred Boayue]]></name>
     
