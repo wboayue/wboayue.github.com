@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Wil Boayue]]></title>
-  <link href="http://wil-boayue.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: javascript | Wil Boayue]]></title>
+  <link href="http://wil-boayue.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://wil-boayue.com/"/>
   <updated>2012-08-10T08:01:53-04:00</updated>
   <id>http://wil-boayue.com/</id>
@@ -22,28 +22,25 @@
 
 <p>This entry submitted by @diogobaeder held my attention. The solutions was not immediately obvious to me so I did some digging. Once I found the correct type coercion rules the result were logical.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span> <span class="o">==</span> <span class="nx">foo</span><span class="p">);</span>  <span class="c1">// true</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span> <span class="o">==</span> <span class="o">!</span><span class="nx">foo</span><span class="p">);</span>  <span class="c1">// true - ???</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span> <span class="o">==</span> <span class="nx">foo</span><span class="p">);</span>    <span class="c1">// true</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span> <span class="o">==</span> <span class="o">!</span><span class="nx">foo</span><span class="p">);</span>   <span class="c1">// true - ???</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>These examine this step by step.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">foo</span> <span class="o">==</span> <span class="nx">foo</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>The above was obvious. References to the same object evaluate to true.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">foo</span> <span class="o">==</span> <span class="o">!</span><span class="nx">foo</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>The expression above took a little longer to decipher.</p>
 
@@ -52,27 +49,23 @@
 
 <p>First the precedence rules come into play.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">!</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>         <span class="c1">// conversion to Boolean(), false</span>
 </span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// true</span>
-</span></code></pre></td></tr></table></div></figure>
-
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>If either operand is a number or a boolean, the operands are converted to numbers.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">Number</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="nb">Number</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="nb">Number</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="mi">0</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
