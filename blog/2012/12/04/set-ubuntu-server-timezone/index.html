@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>WTF Javascript - Type Coercion - Wil Boayue</title>
+  <title>Setting Ubuntu Time Zone - Wil Boayue</title>
   <meta name="author" content="Wilfred Boayue">
 
   
-  <meta name="description" content="I recently came across the site wtfjs.com. It highlights some idiosyncrasies of the Javascript language. It’s worth a look, you’ll get a deeper &hellip;">
+  <meta name="description" content="You will eventually get tired of looking at UTC timestamps in your server log files. https://help.ubuntu.com/community/UbuntuTime has a detailed &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://wil.boayue.com/blog/2012/07/17/wtf-javascript-type-coercion/">
+  <link rel="canonical" href="http://wil.boayue.com/blog/2012/12/04/set-ubuntu-server-timezone/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">WTF Javascript - Type Coercion</h1>
+      <h1 class="entry-title">Setting Ubuntu Time Zone</h1>
     
     
       <p class="meta">
@@ -83,64 +83,30 @@
   
 
 
-<time datetime="2012-07-17T01:27:00-04:00" pubdate data-updated="true">Jul 17<span>th</span>, 2012</time>
+<time datetime="2012-12-04T20:49:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I recently came across the site wtfjs.com. It highlights some idiosyncrasies of the Javascript language. It’s worth a look, you’ll get a deeper understanding of the Javascript language.</p>
+<div class="entry-content"><p>You will eventually get tired of looking at UTC timestamps in your server log files.</p>
 
-<p>This entry submitted by @diogobaeder held my attention. The solutions was not immediately obvious to me so I did some digging. Once I found the correct type coercion rules the result were logical.</p>
+<p><a href="https://help.ubuntu.com/community/UbuntuTime">https://help.ubuntu.com/community/UbuntuTime</a> has a detailed guide for setting the time zone on your server and synchronizing it&#8217;s clock.</p>
+
+<p>Here are the commands I used to set my time zone and synchronize my clock on Ubuntu 12.04.1 LTS.</p>
+
+<p><strong>Set time zone</strong></p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span> <span class="o">==</span> <span class="nx">foo</span><span class="p">);</span>  <span class="c1">// true</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span> <span class="o">==</span> <span class="o">!</span><span class="nx">foo</span><span class="p">);</span>  <span class="c1">// true - ???</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo dpkg-reconfigure tzdata
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>These examine this step by step.</p>
+<p><strong>Synchronize clock</strong></p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">foo</span> <span class="o">==</span> <span class="nx">foo</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The above was obvious. References to the same object evaluate to true.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">foo</span> <span class="o">==</span> <span class="o">!</span><span class="nx">foo</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The expression above took a little longer to decipher.</p>
-
-<!-- https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators -->
-
-
-<p>First the precedence rules come into play.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">!</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>         <span class="c1">// conversion to Boolean(), false</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If either operand is a number or a boolean, the operands are converted to numbers.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">Number</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="nb">Number</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="mi">0</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install ntp
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -167,12 +133,12 @@
   
 
 
-<time datetime="2012-07-17T01:27:00-04:00" pubdate data-updated="true">Jul 17<span>th</span>, 2012</time>
+<time datetime="2012-12-04T20:49:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+    <a class='category' href='/blog/categories/sysadmin/'>sysadmin</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
   
 </span>
 
@@ -181,7 +147,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://wil.boayue.com/blog/2012/07/17/wtf-javascript-type-coercion/" data-via="wboayue" data-counturl="http://wil.boayue.com/blog/2012/07/17/wtf-javascript-type-coercion/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://wil.boayue.com/blog/2012/12/04/set-ubuntu-server-timezone/" data-via="wboayue" data-counturl="http://wil.boayue.com/blog/2012/12/04/set-ubuntu-server-timezone/" >Tweet</a>
   
   
   
@@ -190,8 +156,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2012/07/17/wtf-javascript-type-coercion/" title="Previous Post: WTF Javascript - Type Coercion">&laquo; WTF Javascript - Type Coercion</a>
       
-        <a class="basic-alignment right" href="/blog/2012/12/04/set-ubuntu-server-timezone/" title="Next Post: Setting Ubuntu Time Zone">Setting Ubuntu Time Zone &raquo;</a>
       
     </p>
   </footer>

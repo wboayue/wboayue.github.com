@@ -9,7 +9,7 @@
   <meta name="author" content="Wilfred Boayue">
 
   
-  <meta name="description" content="I recently came across the site wtfjs.com. It highlights some idiosyncrasies of the Javascript language. It’s worth a look, you’ll get a deeper &hellip;">
+  <meta name="description" content="You will eventually get tired of looking at UTC timestamps in your server log files. https://help.ubuntu.com/community/UbuntuTime has a detailed &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/04/set-ubuntu-server-timezone/">Setting Ubuntu Time Zone</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-04T20:49:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>You will eventually get tired of looking at UTC timestamps in your server log files.</p>
+
+<p><a href="https://help.ubuntu.com/community/UbuntuTime">https://help.ubuntu.com/community/UbuntuTime</a> has a detailed guide for setting the time zone on your server and synchronizing it&#8217;s clock.</p>
+
+<p>Here are the commands I used to set my time zone and synchronize my clock on Ubuntu 12.04.1 LTS.</p>
+
+<p><strong>Set time zone</strong></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo dpkg-reconfigure tzdata
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Synchronize clock</strong></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install ntp
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -166,6 +222,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/04/set-ubuntu-server-timezone/">Setting Ubuntu Time Zone</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/07/17/wtf-javascript-type-coercion/">WTF Javascript - Type Coercion</a>

@@ -4,7 +4,7 @@
   <title><![CDATA[Wil Boayue]]></title>
   <link href="http://wil.boayue.com/atom.xml" rel="self"/>
   <link href="http://wil.boayue.com/"/>
-  <updated>2012-11-09T12:22:57-05:00</updated>
+  <updated>2012-12-04T23:05:16-05:00</updated>
   <id>http://wil.boayue.com/</id>
   <author>
     <name><![CDATA[Wilfred Boayue]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setting Ubuntu Time Zone]]></title>
+    <link href="http://wil.boayue.com/blog/2012/12/04/set-ubuntu-server-timezone/"/>
+    <updated>2012-12-04T20:49:00-05:00</updated>
+    <id>http://wil.boayue.com/blog/2012/12/04/set-ubuntu-server-timezone</id>
+    <content type="html"><![CDATA[<p>You will eventually get tired of looking at UTC timestamps in your server log files.</p>
+
+<p><a href="https://help.ubuntu.com/community/UbuntuTime">https://help.ubuntu.com/community/UbuntuTime</a> has a detailed guide for setting the time zone on your server and synchronizing it&#8217;s clock.</p>
+
+<p>Here are the commands I used to set my time zone and synchronize my clock on Ubuntu 12.04.1 LTS.</p>
+
+<p><strong>Set time zone</strong></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo dpkg-reconfigure tzdata
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Synchronize clock</strong></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install ntp
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[WTF Javascript - Type Coercion]]></title>
