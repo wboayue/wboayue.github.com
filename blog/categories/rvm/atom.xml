@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rvm | Wil Boayue]]></title>
+  <link href="http://wil.boayue.com/blog/categories/rvm/atom.xml" rel="self"/>
+  <link href="http://wil.boayue.com/"/>
+  <updated>2013-03-03T17:44:33-05:00</updated>
+  <id>http://wil.boayue.com/</id>
+  <author>
+    <name><![CDATA[Wilfred Boayue]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby performance patches]]></title>
+    <link href="http://wil.boayue.com/blog/2013/03/02/ruby-performance-patches/"/>
+    <updated>2013-03-02T13:00:00-05:00</updated>
+    <id>http://wil.boayue.com/blog/2013/03/02/ruby-performance-patches</id>
+    <content type="html"><![CDATA[<p>There are a several ruby performance patches, like the <a href="https://gist.github.com/funny-falcon">falcon patches</a>, that may improve the performace of your application.</p>
+
+<p>I use rvm and was pleased to learn that rvm supports compiling ruby with serveral of these performance patches. Using rvm with the <em>railsexpress</em> patch, I saw a 20% reduction in the time required to run the test suite for a large rails project.</p>
+
+<p>Here is how you can install ruby with the <em>railexpress</em> patch using rvm.</p>
+
+<p>First make sure you have the latest version of rvm.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm get head
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Next install ruby 1.9.3 with the railsexpress patch. At this step rvm may have dependencies that require installation.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm install 1.9.3 --patch railsexpress
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The <em>railsexpress</em> patch contains the following patches.</p>
+
+<ul>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/01-fix-make-clean.patch">01-fix-make-clean.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/02-railsbench-gc.patch">02-railsbench-gc.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/03-display-more-detailed-stack-trace.patch">03-display-more-detailed-stack-trace.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/04-fork-support-for-gc-logging.patch">04-fork-support-for-gc-logging.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/05-track-live-dataset-size.patch">05-track-live-dataset-size.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/06-webrick_204_304_keep_alive_fix.patch">06-webrick_204_304_keep_alive_fix.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/07-export-a-few-more-symbols-for-ruby-prof.patch">07-export-a-few-more-symbols-for-ruby-prof.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/08-thread-variables.patch">08-thread-variables.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/09-faster-loading.patch">09-faster-loading.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/10-falcon-st-opt.patch">10-falcon-st-opt.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/11-falcon-sparse-array.patch">11-falcon-sparse-array.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/12-falcon-array-queue.patch">12-falcon-array-queue.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/13-railsbench-gc-fixes.patch">13-railsbench-gc-fixes.patch</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

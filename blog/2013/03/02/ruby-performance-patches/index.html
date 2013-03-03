@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Setting Ubuntu Time Zone - Wil Boayue</title>
+  <title>Ruby performance patches - Wil Boayue</title>
   <meta name="author" content="Wilfred Boayue">
 
   
-  <meta name="description" content="You will eventually get tired of looking at UTC timestamps in your server log files. https://help.ubuntu.com/community/UbuntuTime has a detailed &hellip;">
+  <meta name="description" content="There are a several ruby performance patches, like the falcon patches, that may improve the performace of your application. I use rvm and was pleased &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://wil.boayue.com/blog/2012/12/04/set-ubuntu-server-timezone/">
+  <link rel="canonical" href="http://wil.boayue.com/blog/2013/03/02/ruby-performance-patches/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,7 +67,7 @@
   
   <header>
     
-      <h1 class="entry-title">Setting Ubuntu Time Zone</h1>
+      <h1 class="entry-title">Ruby Performance Patches</h1>
     
     
       <p class="meta">
@@ -83,33 +83,50 @@
   
 
 
-<time datetime="2012-12-04T20:49:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2012</time>
+<time datetime="2013-03-02T13:00:00-05:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>You will eventually get tired of looking at UTC timestamps in your server log files.</p>
+<div class="entry-content"><p>There are a several ruby performance patches, like the <a href="https://gist.github.com/funny-falcon">falcon patches</a>, that may improve the performace of your application.</p>
 
-<p><a href="https://help.ubuntu.com/community/UbuntuTime">https://help.ubuntu.com/community/UbuntuTime</a> has a detailed guide for setting the time zone on your server and synchronizing it&#8217;s clock.</p>
+<p>I use rvm and was pleased to learn that rvm supports compiling ruby with serveral of these performance patches. Using rvm with the <em>railsexpress</em> patch, I saw a 20% reduction in the time required to run the test suite for a large rails project.</p>
 
-<p>Here are the commands I used to set my time zone and synchronize my clock on Ubuntu 12.04.1 LTS.</p>
+<p>Here is how you can install ruby with the <em>railexpress</em> patch using rvm.</p>
 
-<p><strong>Set time zone</strong></p>
+<p>First make sure you have the latest version of rvm.</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo dpkg-reconfigure tzdata
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm get head
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>Synchronize clock</strong></p>
+<p>Next install ruby 1.9.3 with the railsexpress patch. At this step rvm may have dependencies that require installation.</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install ntp
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm install 1.9.3 --patch railsexpress
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>The <em>railsexpress</em> patch contains the following patches.</p>
+
+<ul>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/01-fix-make-clean.patch">01-fix-make-clean.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/02-railsbench-gc.patch">02-railsbench-gc.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/03-display-more-detailed-stack-trace.patch">03-display-more-detailed-stack-trace.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/04-fork-support-for-gc-logging.patch">04-fork-support-for-gc-logging.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/05-track-live-dataset-size.patch">05-track-live-dataset-size.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/06-webrick_204_304_keep_alive_fix.patch">06-webrick_204_304_keep_alive_fix.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/07-export-a-few-more-symbols-for-ruby-prof.patch">07-export-a-few-more-symbols-for-ruby-prof.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/08-thread-variables.patch">08-thread-variables.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/09-faster-loading.patch">09-faster-loading.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/10-falcon-st-opt.patch">10-falcon-st-opt.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/11-falcon-sparse-array.patch">11-falcon-sparse-array.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/12-falcon-array-queue.patch">12-falcon-array-queue.patch</a></li>
+<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/13-railsbench-gc-fixes.patch">13-railsbench-gc-fixes.patch</a></li>
+</ul>
 
 </div>
 
@@ -133,12 +150,12 @@
   
 
 
-<time datetime="2012-12-04T20:49:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2012</time>
+<time datetime="2013-03-02T13:00:00-05:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/sysadmin/'>sysadmin</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+    <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/rvm/'>rvm</a>
   
 </span>
 
@@ -147,7 +164,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://wil.boayue.com/blog/2012/12/04/set-ubuntu-server-timezone/" data-via="wboayue" data-counturl="http://wil.boayue.com/blog/2012/12/04/set-ubuntu-server-timezone/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://wil.boayue.com/blog/2013/03/02/ruby-performance-patches/" data-via="wboayue" data-counturl="http://wil.boayue.com/blog/2013/03/02/ruby-performance-patches/" >Tweet</a>
   
   
   
@@ -156,10 +173,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/07/17/wtf-javascript-type-coercion/" title="Previous Post: WTF Javascript - Type Coercion">&laquo; WTF Javascript - Type Coercion</a>
+        <a class="basic-alignment left" href="/blog/2012/12/04/set-ubuntu-server-timezone/" title="Previous Post: Setting Ubuntu Time Zone">&laquo; Setting Ubuntu Time Zone</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/03/02/ruby-performance-patches/" title="Next Post: Ruby performance patches">Ruby performance patches &raquo;</a>
       
     </p>
   </footer>
