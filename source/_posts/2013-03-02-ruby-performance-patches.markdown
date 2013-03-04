@@ -6,9 +6,9 @@ comments: true
 categories: [ruby,rails,rvm]
 ---
 
-There are a several ruby performance patches, like the [falcon patches](https://gist.github.com/funny-falcon), that may improve the performace of your application.
+There are several ruby performance patches, like the [falcon patches](https://gist.github.com/funny-falcon), that may improve the performace of your application.
 
-I use rvm and was pleased to learn that rvm supports compiling ruby with serveral of these performance patches. Using rvm with the *railsexpress* patch, I saw a 20% reduction in the time required to run the test suite for a large rails project. 
+I use rvm and was pleased to learn that rvm supports compiling ruby with several of these performance patches. Using rvm with the *railsexpress* patch, I saw a 20% reduction in the time required to run the test suite for a large rails project. 
 
 Here is how you can install ruby with the *railexpress* patch using rvm.
 

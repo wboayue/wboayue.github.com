@@ -8,7 +8,7 @@ categories: [javascript]
 
 I recently came across the site wtfjs.com. It highlights some idiosyncrasies of the Javascript language. It’s worth a look, you’ll get a deeper understanding of the Javascript language.
 
-This entry submitted by @diogobaeder held my attention. The solutions was not immediately obvious to me so I did some digging. Once I found the correct type coercion rules the result were logical.
+This entry submitted by @diogobaeder held my attention. The solution was not immediately obvious to me so I did some digging. Once I found the correct type coercion rules the result were logical.
 
 {% codeblock lang:javascript %}
 var foo = [0];
