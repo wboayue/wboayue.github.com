@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - Wil Boayue</title>
+  <title>Using npm behind a corporate proxy - Wil Boayue</title>
   <meta name="author" content="Wil Boayue">
 
   
-  <meta name="description" content="Blog Archive 2013 Using npm behind a corporate proxy
-Jun 14 2013 posted in javascript, nodejs, npm Ruby performance patches
-Mar 02 2013 posted in &hellip;">
+  <meta name="description" content="On a recent assignment, I needed to install npm behind a corporate proxy. I had already set the environment variables HTTP_PROXY and HTTPS_PROXY. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ Mar 02 2013 posted in &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://wil.boayue.com/blog/archives/">
+  <link rel="canonical" href="http://wil.boayue.com/blog/2013/06/14/using-npm-behind-a-proxy/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -65,80 +63,117 @@ Mar 02 2013 posted in &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">Using Npm Behind a Corporate Proxy</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-14T23:12:00-04:00" pubdate data-updated="true">Jun 14<span>th</span>, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><p>On a recent assignment, I needed to install npm behind a corporate proxy. I had already set the environment variables <code>HTTP_PROXY</code> and <code>HTTPS_PROXY</code>. Other command line utilities, like ruby gems, recognized these environment variables. Npm did not.</p>
 
-  
-  <h2>2013</h2>
+<p>After some googling, I found the following way to configure the proxy for npm.</p>
 
-<article>
-  
-<h1><a href="/blog/2013/06/14/using-npm-behind-a-proxy/">Using npm behind a corporate proxy</a></h1>
-<time datetime="2013-06-14T23:12:00-04:00" pubdate><span class='month'>Jun</span> <span class='day'>14</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/nodejs/'>nodejs</a>, <a class='category' href='/blog/categories/npm/'>npm</a></span>
-</footer>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm config <span class="nb">set </span>proxy http://proxy.company.com:8080
+</span><span class='line'>npm config <span class="nb">set </span>https-proxy http://proxy.company.com:8080
+</span></code></pre></td></tr></table></div></figure>
 
 
-</article>
+<p>If you need to specify credentials, they can be passed in the url using the following syntax.</p>
+
+<p><code>http://user_name:password@proxy.company.com:8080</code></p>
+
+<p>Further exploration of the <a href="https://npmjs.org/doc/config.html">npm config documentation</a> showed that the <code>npm config set</code> command sets the proxy configuration in your <code>.npmrc</code> file. You can also set the proxy configuration as a command line argument or environment variable.</p>
+
+<p>Configuration parameters can be specified using <code>--</code> when executing npm. So the proxy could also be specified as follows.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm --https-proxy<span class="o">=</span>http://proxy.company.com:8080 -g install karma
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p> To pass configurattion parameters to npm as environment variables, they must be prefixed with <code>npm_config_</code>. The proxy configuration could be set with environment variables as follows.</p>
 
-<article>
-  
-<h1><a href="/blog/2013/03/02/ruby-performance-patches/">Ruby performance patches</a></h1>
-<time datetime="2013-03-02T13:00:00-05:00" pubdate><span class='month'>Mar</span> <span class='day'>02</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/rvm/'>rvm</a></span>
-</footer>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span>npm_config_proxy http://proxy.company.com:8080
+</span><span class='line'><span class="nb">export </span>npm_config_https_proxy http://proxy.company.com:8080
+</span></code></pre></td></tr></table></div></figure>
 
 
-</article>
-
-
-
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/2012/12/04/set-ubuntu-server-timezone/">Setting Ubuntu Time Zone</a></h1>
-<time datetime="2012-12-04T20:49:00-05:00" pubdate><span class='month'>Dec</span> <span class='day'>04</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/sysadmin/'>sysadmin</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/07/17/wtf-javascript-type-coercion/">WTF Javascript - Type Coercion</a></h1>
-<time datetime="2012-07-17T01:27:00-04:00" pubdate><span class='month'>Jul</span> <span class='day'>17</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/javascript/'>javascript</a></span>
-</footer>
-
-
-</article>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Wil Boayue</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-14T23:12:00-04:00" pubdate data-updated="true">Jun 14<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/nodejs/'>nodejs</a>, <a class='category' href='/blog/categories/npm/'>npm</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://wil.boayue.com/blog/2013/06/14/using-npm-behind-a-proxy/" data-via="wboayue" data-counturl="http://wil.boayue.com/blog/2013/06/14/using-npm-behind-a-proxy/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/02/ruby-performance-patches/" title="Previous Post: Ruby performance patches">&laquo; Ruby performance patches</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

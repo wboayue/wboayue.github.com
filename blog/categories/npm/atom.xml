@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: npm | Wil Boayue]]></title>
+  <link href="http://wil.boayue.com/blog/categories/npm/atom.xml" rel="self"/>
+  <link href="http://wil.boayue.com/"/>
+  <updated>2013-06-15T00:08:41-04:00</updated>
+  <id>http://wil.boayue.com/</id>
+  <author>
+    <name><![CDATA[Wil Boayue]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using npm behind a corporate proxy]]></title>
+    <link href="http://wil.boayue.com/blog/2013/06/14/using-npm-behind-a-proxy/"/>
+    <updated>2013-06-14T23:12:00-04:00</updated>
+    <id>http://wil.boayue.com/blog/2013/06/14/using-npm-behind-a-proxy</id>
+    <content type="html"><![CDATA[<p>On a recent assignment, I needed to install npm behind a corporate proxy. I had already set the environment variables <code>HTTP_PROXY</code> and <code>HTTPS_PROXY</code>. Other command line utilities, like ruby gems, recognized these environment variables. Npm did not.</p>
+
+<p>After some googling, I found the following way to configure the proxy for npm.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm config <span class="nb">set </span>proxy http://proxy.company.com:8080
+</span><span class='line'>npm config <span class="nb">set </span>https-proxy http://proxy.company.com:8080
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>If you need to specify credentials, they can be passed in the url using the following syntax.</p>
+
+<p><code>http://user_name:password@proxy.company.com:8080</code></p>
+
+<p>Further exploration of the <a href="https://npmjs.org/doc/config.html">npm config documentation</a> showed that the <code>npm config set</code> command sets the proxy configuration in your <code>.npmrc</code> file. You can also set the proxy configuration as a command line argument or environment variable.</p>
+
+<p>Configuration parameters can be specified using <code>--</code> when executing npm. So the proxy could also be specified as follows.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm --https-proxy<span class="o">=</span>http://proxy.company.com:8080 -g install karma
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p> To pass configurattion parameters to npm as environment variables, they must be prefixed with <code>npm_config_</code>. The proxy configuration could be set with environment variables as follows.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span>npm_config_proxy http://proxy.company.com:8080
+</span><span class='line'><span class="nb">export </span>npm_config_https_proxy http://proxy.company.com:8080
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>
