@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Wil Boayue</title>
+  <title>Java Automatic Resource Management - Wil Boayue</title>
   <meta name="author" content="Wil Boayue">
 
   
@@ -43,7 +43,7 @@ from The Java Tutorials. 1
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://wil.boayue.com/">
+  <link rel="canonical" href="http://wil.boayue.com/blog/2013/09/13/java-7-automatic-resource-management/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -99,15 +99,12 @@ from The Java Tutorials. 1
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/09/13/java-7-automatic-resource-management/">Java Automatic Resource Management</a></h1>
+      <h1 class="entry-title">Java Automatic Resource Management</h1>
     
     
       <p class="meta">
@@ -130,7 +127,7 @@ from The Java Tutorials. 1
   </header>
 
 
-  <div class="entry-content"><p>You might have seen
+<div class="entry-content"><p>You might have seen
 <a href="http://docs.oracle.com/javase/tutorial/essential/io/bytestreams.html">this example</a>
 from <a href="http://docs.oracle.com/javase/tutorial/index.html">The Java Tutorials</a>.</p>
 
@@ -276,91 +273,16 @@ with the <a href="http://commons.apache.org/proper/commons-io/">Commons IO</a>: 
 
 <p>Get the details in this <a href="http://www.oracle.com/technetwork/articles/java/trywithresources-401775.html">article</a></p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/14/using-npm-behind-a-proxy/">Using Npm Behind a Corporate Proxy</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">Wil Boayue</span></span>
 
-<time datetime="2013-06-14T23:12:00-04:00" pubdate data-updated="true">Jun 14<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>On a recent assignment, I needed to install npm behind a corporate proxy. I had already set the environment variables <code>HTTP_PROXY</code> and <code>HTTPS_PROXY</code>. Other command line utilities, like ruby gems, recognized these environment variables. Npm did not.</p>
-
-<p>After some googling, I found the following way to configure the proxy for npm.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm config <span class="nb">set </span>proxy http://proxy.company.com:8080
-</span><span class='line'>npm config <span class="nb">set </span>https-proxy http://proxy.company.com:8080
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If you need to specify credentials, they can be passed in the url using the following syntax.</p>
-
-<p><code>http://user_name:password@proxy.company.com:8080</code></p>
-
-<p>Further exploration of the <a href="https://npmjs.org/doc/config.html">npm config documentation</a> showed that the <code>npm config set</code> command sets the proxy configuration in your <code>.npmrc</code> file. You can also set the proxy configuration as a command line argument or environment variable.</p>
-
-<p>Configuration parameters can be specified using <code>--</code> when executing npm. So the proxy could also be specified as follows.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm --https-proxy<span class="o">=</span>http://proxy.company.com:8080 -g install karma
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p> To pass configurattion parameters to npm as environment variables, they must be prefixed with <code>npm_config_</code>. The proxy configuration could be set with environment variables as follows.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span>npm_config_proxy http://proxy.company.com:8080
-</span><span class='line'><span class="nb">export </span>npm_config_https_proxy http://proxy.company.com:8080
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/02/ruby-performance-patches/">Ruby Performance Patches</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -372,210 +294,50 @@ with the <a href="http://commons.apache.org/proper/commons-io/">Commons IO</a>: 
   
 
 
-<time datetime="2013-03-02T13:00:00-05:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There are several ruby performance patches, like the <a href="https://gist.github.com/funny-falcon">falcon patches</a>, that may improve the performace of your application.</p>
-
-<p>I use rvm and was pleased to learn that rvm supports compiling ruby with several of these performance patches. Using rvm with the <em>railsexpress</em> patch, I saw a 20% reduction in the time required to run the test suite for a large rails project.</p>
-
-<p>Here is how you can install ruby with the <em>railexpress</em> patch using rvm.</p>
-
-<p>First make sure you have the latest version of rvm.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm get head
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Next install ruby 1.9.3 with the railsexpress patch. At this step rvm may have dependencies that require installation.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm install 1.9.3 --patch railsexpress
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The <em>railsexpress</em> patch contains the following patches.</p>
-
-<ul>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/01-fix-make-clean.patch">01-fix-make-clean.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/02-railsbench-gc.patch">02-railsbench-gc.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/03-display-more-detailed-stack-trace.patch">03-display-more-detailed-stack-trace.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/04-fork-support-for-gc-logging.patch">04-fork-support-for-gc-logging.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/05-track-live-dataset-size.patch">05-track-live-dataset-size.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/06-webrick_204_304_keep_alive_fix.patch">06-webrick_204_304_keep_alive_fix.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/07-export-a-few-more-symbols-for-ruby-prof.patch">07-export-a-few-more-symbols-for-ruby-prof.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/08-thread-variables.patch">08-thread-variables.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/09-faster-loading.patch">09-faster-loading.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/10-falcon-st-opt.patch">10-falcon-st-opt.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/11-falcon-sparse-array.patch">11-falcon-sparse-array.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/12-falcon-array-queue.patch">12-falcon-array-queue.patch</a></li>
-<li><a href="https://github.com/skaes/rvm-patchsets/blob/master/patches/ruby/1.9.3/p392/railsexpress/13-railsbench-gc-fixes.patch">13-railsbench-gc-fixes.patch</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2013-09-13T13:00:00-04:00" pubdate data-updated="true">Sep 13<span>th</span>, 2013</time>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/04/set-ubuntu-server-timezone/">Setting Ubuntu Time Zone</a></h1>
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="categories">
   
+    <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
 
 
-<time datetime="2012-12-04T20:49:00-05:00" pubdate data-updated="true">Dec 4<span>th</span>, 2012</time>
-        
-      </p>
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>You will eventually get tired of looking at UTC timestamps in your server log files.</p>
-
-<p><a href="https://help.ubuntu.com/community/UbuntuTime">https://help.ubuntu.com/community/UbuntuTime</a> has a detailed guide for setting the time zone on your server and synchronizing it&#8217;s clock.</p>
-
-<p>Here are the commands I used to set my time zone and synchronize my clock on Ubuntu 12.04.1 LTS.</p>
-
-<p><strong>Set time zone</strong></p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo dpkg-reconfigure tzdata
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Synchronize clock</strong></p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install ntp
-</span></code></pre></td></tr></table></div></figure>
-
-
-
+      <div class="sharing">
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  
+    <script src="//platform.linkedin.com/in.js" type="text/javascript">
+     lang: en_US
+    </script>  
+    <script type="IN/Share" data-url="http://wil.boayue.com/blog/2013/09/13/java-7-automatic-resource-management/" data-counter="right"></script>
+  
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/07/17/wtf-javascript-type-coercion/">WTF Javascript - Type Coercion</a></h1>
-    
-    
-      <p class="meta">
-        
+        <a class="basic-alignment left" href="/blog/2013/06/14/using-npm-behind-a-proxy/" title="Previous Post: Using npm behind a corporate proxy">&laquo; Using npm behind a corporate proxy</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-17T01:27:00-04:00" pubdate data-updated="true">Jul 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently came across the site wtfjs.com. It highlights some idiosyncrasies of the Javascript language. It’s worth a look, you’ll get a deeper understanding of the Javascript language.</p>
-
-<p>This entry submitted by @diogobaeder held my attention. The solution was not immediately obvious to me so I did some digging. Once I found the correct type coercion rules the result were logical.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span> <span class="o">==</span> <span class="nx">foo</span><span class="p">);</span>  <span class="c1">// true</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span> <span class="o">==</span> <span class="o">!</span><span class="nx">foo</span><span class="p">);</span>  <span class="c1">// true - ???</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>These examine this step by step.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">foo</span> <span class="o">==</span> <span class="nx">foo</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The above was obvious. References to the same object evaluate to true.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">foo</span> <span class="o">==</span> <span class="o">!</span><span class="nx">foo</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The expression above took a little longer to decipher.</p>
-
-<!-- https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators -->
-
-
-<p>First the precedence rules come into play.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">!</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>         <span class="c1">// conversion to Boolean(), false</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If either operand is a number or a boolean, the operands are converted to numbers.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">Number</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="nb">Number</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="mi">0</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -608,7 +370,7 @@ with the <a href="http://commons.apache.org/proper/commons-io/">Commons IO</a>: 
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/wboayue">@wboayue</a> on GitHub
@@ -655,6 +417,7 @@ with the <a href="http://commons.apache.org/proper/commons-io/">Commons IO</a>: 
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -669,7 +432,10 @@ with the <a href="http://commons.apache.org/proper/commons-io/">Commons IO</a>: 
       var disqus_shortname = 'wboayue';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://wil.boayue.com/blog/2013/09/13/java-7-automatic-resource-management/';
+        var disqus_url = 'http://wil.boayue.com/blog/2013/09/13/java-7-automatic-resource-management/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
