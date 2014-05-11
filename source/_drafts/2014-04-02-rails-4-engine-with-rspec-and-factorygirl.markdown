@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: draft
 title: "Rails 4 Engines with RSpec and FactoryGirl"
 date: 2014-04-02 12:42
 comments: true
@@ -10,18 +10,18 @@ I've been using [Rails Engines](http://guides.rubyonrails.org/engines.html) to s
 
 My preferred testing tools are [RSpec](http://rspec.info/) and [FactoryGirl](https://github.com/thoughtbot/factory_girl). This is a guide for creating a Rails Engine configured for RSpec and Factory girl.
 
-* Create the engine
+1. Create the engine
 
-`rails plugin new ENGINE_NAME --dummy-path=spec/dummy --skip-test-unit --mountable`
+  `rails plugin new ENGINE_NAME --dummy-path=spec/dummy --skip-test-unit --mountable`
 
-** `--dummy-path=spec/dummy` specifies the path for the test application. Default path is test/dummy
-** `--skip-test-unit` skips the generation of the test unit files
-** `--mountable` generates a namespaced engine
+  * `--dummy-path=spec/dummy` specifies the path for the test application. Default path is test/dummy
+  * `--skip-test-unit` skips the generation of the test unit files
+  * `--mountable` generates a namespaced engine
 
-* Add RSpec and FactoryGirl dependencies to gemspec.
+2. Add RSpec and FactoryGirl dependencies to gemspec.
 
-s.add_development_dependency 'rspec-rails'
-s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'factory_girl_rails'
 
 Specify test files
 
