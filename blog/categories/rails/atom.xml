@@ -4,10 +4,10 @@
   <title><![CDATA[Category: rails | Wil Boayue]]></title>
   <link href="http://wil.boayue.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://wil.boayue.com/"/>
-  <updated>2014-05-11T11:53:20-04:00</updated>
+  <updated>2016-06-03T09:57:09-04:00</updated>
   <id>http://wil.boayue.com/</id>
   <author>
-    <name><![CDATA[Wil Boayue]]></name>
+    <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -26,15 +26,15 @@
 
 <p>First make sure you have the latest version of rvm.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm get head
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}
+rvm get head
+{% endcodeblock %}</p>
 
 <p>Next install ruby 1.9.3 with the railsexpress patch. At this step rvm may have dependencies that require installation.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm install 1.9.3 --patch railsexpress
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}
+rvm install 1.9.3 --patch railsexpress
+{% endcodeblock %}</p>
 
 <p>The <em>railsexpress</em> patch contains the following patches.</p>
 

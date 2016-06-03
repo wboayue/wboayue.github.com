@@ -4,10 +4,10 @@
   <title><![CDATA[Category: ubuntu | Wil Boayue]]></title>
   <link href="http://wil.boayue.com/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://wil.boayue.com/"/>
-  <updated>2014-05-11T11:53:20-04:00</updated>
+  <updated>2016-06-03T09:57:09-04:00</updated>
   <id>http://wil.boayue.com/</id>
   <author>
-    <name><![CDATA[Wil Boayue]]></name>
+    <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -25,14 +25,14 @@
 <p>Here are the commands I used to set my time zone and synchronize my clock on Ubuntu 12.04.1 LTS.</p>
 
 <p><strong>Set time zone</strong>
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo dpkg-reconfigure tzdata
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:bash %}
+sudo dpkg-reconfigure tzdata
+{% endcodeblock %}</p>
 
 <p><strong>Synchronize clock</strong>
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install ntp
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:bash %}
+sudo apt-get install ntp
+{% endcodeblock %}</p>
 ]]></content>
   </entry>
   
